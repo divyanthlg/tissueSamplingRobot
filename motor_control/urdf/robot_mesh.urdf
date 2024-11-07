@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<robot name="mira">
+
+    <link name="base_link">
+    </link>
+
+<!-- X-Axis Track 1 Link -->
+    <link name="x_track_1">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_track.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin rpy="1.571 0 0" xyz="-0.1 0 0.025"/>
+            <material name="gray">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.625 0.04 0.02"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- X-Axis Support 1 Link -->
+    <link name="x_support_1">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_support.dae" scale="0.001 0.001 0.001"/> 
+            </geometry>
+            <origin rpy="1.571 0 0" xyz="-0.02 0 0"/>
+            <material name="gray">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.063 0.047 0.04"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- X-Axis Track 2 Link -->
+    <link name="x_track_2">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_track.dae" scale="0.001 0.001 0.001"/>         <!-- Size for X-axis rail -->
+            </geometry>
+            <origin rpy="1.571 0 0" xyz="-0.1 0 0.025"/>
+            <material name="gray">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.625 0.04 0.02"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- X-Axis Support 2 Link -->
+    <link name="x_support_2">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_support.dae" scale="0.001 0.001 0.001"/> 
+            </geometry>
+            <origin rpy="1.571 0 0" xyz="-0.02 0 0"/>
+            <material name="gray">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.063 0.047 0.04"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- Y-Axis Link -->
+    <link name="y_track">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_track.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin rpy="0 0 1.571" xyz="-0.025 -0.09 0"/>
+            <material name="gray">
+                <color rgba="0.6 0.6 0.6 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.02 0.625 0.04"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- Y-Axis Support Link -->
+    <link name="y_support">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_support.dae" scale="0.001 0.001 0.001"/> 
+            </geometry>
+            <origin rpy="0 0 1.571" xyz="0 0 0"/>
+            <material name="gray">
+                <color rgba="0.6 0.6 0.6 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.04 0.063 0.047"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- Z-Axis Link -->
+    <link name="z_track">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_track.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin rpy="-1.571 1.571 0" xyz="-0.02 0.02 0.22"/>
+            <material name="gray">
+                <color rgba="0.5 0.5 0.5 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.02 0.04 0.325"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- Z-Axis Support Link -->
+    <link name="z_support">
+        <visual>
+            <geometry>
+                <mesh filename="package://motor_control/models/cartesian_robot/meshes/actuator_support.dae" scale="0.001 0.001 0.001"/> 
+            </geometry>
+            <origin rpy="1.571 1.571 3.142" xyz="0.004 0.02 0"/>
+            <material name="gray">
+                <color rgba="0.6 0.6 0.6 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.04 0.047 0.063"/>
+            </geometry>
+        </collision>
+    </link>
+
+<!-- Fixed Joint between X-Axis Track 1 and Base Link -->
+    <joint name="x1Base" type="fixed">
+        <parent link="base_link"/>
+        <child link="x_track_1"/>
+        <origin xyz="-0.3125 0 0.01" rpy="0 0 0"/>
+    </joint>
+
+<!-- Fixed Joint between X-Axis Track 2 and Base Link -->
+    <joint name="x2Base" type="fixed">
+        <parent link="base_link"/>
+        <child link="x_track_2"/>
+        <origin xyz="-0.3125 0.585 0.01" rpy="0 0 0"/>
+    </joint>
+
+<!-- Fixed Joint between X-Axis Support 1 and X-Axis Support 2 -->
+    <joint name="xSupportFixed" type="fixed">
+        <parent link="x_support_1"/>
+        <child link="x_support_2"/>
+        <origin xyz="0 0.585 0" rpy="0 0 0"/>
+    </joint>
+
+<!-- Prismatic Joint between X-Axis Track 1 and X-Axis Support 1 -->
+    <joint name="xPrismatic1" type="prismatic">
+        <parent link="x_track_1"/>
+        <child link="x_support_1"/>
+        <origin xyz="0.2815 0 0.038" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-0.478" upper="-0.015" effort="100" velocity="1"/>
+    </joint>
+
+<!-- Fixed Joint between Y-axis and X-axis Support 1 -->
+    <joint name="x1yFixed" type="fixed">
+        <parent link="x_support_1"/>
+        <child link="y_track"/>
+        <origin xyz="0.017 0.2925 0.051" rpy="0 0 0"/>
+    </joint>
+
+<!-- Fixed Joint between Y-axis and X-axis Support 2 -->
+    <joint name="x2yFixed" type="fixed">
+        <parent link="x_support_2"/>
+        <child link="y_track"/>
+        <origin xyz="0.017 -0.2925 0.051" rpy="0 0 0"/>
+    </joint>
+
+<!-- Prismatic Joint between Y-Axis and Y-Axis Support -->
+    <joint name="yPrismatic" type="prismatic">
+        <parent link="y_track"/>
+        <child link="y_support"/>
+        <origin xyz="-0.038 -0.2425 0" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="0.01" upper="0.387" effort="100" velocity="1"/>
+    </joint>
+
+<!-- Fixed Joint between Z-axis and Y-axis Support -->
+    <joint name="yzFixed" type="fixed">
+        <parent link="y_support"/>
+        <child link="z_track"/>
+        <origin xyz="-0.04 0.000 0.1275" rpy="0 0 0"/>
+    </joint>
+
+<!-- Prismatic Joint between Z-Axis and Z-Axis Support -->
+    <joint name="zPrismatic" type="prismatic">
+        <parent link="z_track"/>
+        <child link="z_support"/>
+        <origin xyz="-0.038 0 -0.1310" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="0.003" upper="0.188" effort="100" velocity="1"/>
+    </joint>
+
+</robot>

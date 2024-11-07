@@ -1,0 +1,19 @@
+<launch>
+    <!-- Load the URDF file -->
+    <param name="robot_description" command="cat $(find motor_control)/urdf/cartesian_robot.urdf" />
+
+    <!-- Start the joint_state_publisher to publish joint states -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- Start the robot_state_publisher to publish the robot's URDF to TF -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+    <!-- Spawn robot in Gazebo -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model cartesian_robot" />
+
+    <!-- Controller for prismatic joints -->
+    <node name="cartesian_robot_controller" pkg="controller_manager" type="spawner" args="joint_trajectory_controller" />
+
+</launch>
